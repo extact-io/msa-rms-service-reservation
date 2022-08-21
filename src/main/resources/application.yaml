@@ -48,6 +48,10 @@ javax.sql.DataSource:
 #----------------------------------
 # rmsApplications Configurations
 #----------------------------------
+configuredCdi:
+  register:
+    - class: io.extact.msa.rms.platform.core.jwt.client.PropagateLoginClientHeadersFactory
+
 main.manifest.jar: msa-rms-service-reservation\.jar$
 
 persistence:
