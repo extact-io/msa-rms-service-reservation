@@ -1,0 +1,26 @@
+config_ordinal: 201
+
+service.url:
+  item: http://localhost:7001
+  user: http://localhost:7001
+
+#----------------------------------
+# -service.jar Test Configurations
+#----------------------------------
+persistence:
+  apiType: jpa
+
+external:
+  apiType: stub
+
+# DB Conneciton for Unit Test
+test.db.connection:
+  unitname: rms
+  properties:
+    javax.persistence.transactionType: RESOURCE_LOCAL
+    javax.persistence.jdbc.driver: org.h2.jdbcx.JdbcDataSource
+    javax.persistence.jdbc.url: jdbc:h2:mem:rms;INIT=RUNSCRIPT FROM 'classpath:init-rms.ddl'
+    javax.persistence.jdbc.user: sa
+    javax.persistence.jdbc.password:
+    eclipselink.target-server: None
+
