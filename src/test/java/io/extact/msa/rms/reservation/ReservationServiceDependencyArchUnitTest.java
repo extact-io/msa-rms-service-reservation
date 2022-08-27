@@ -32,10 +32,10 @@ class ReservationServiceDependencyArchUnitTest {
                                 "org.slf4j..",
                                 "org.eclipse.microprofile.jwt..",
                                 "org.eclipse.microprofile.openapi..",
-                                "javax.inject..",
-                                "javax.enterprise.context..",
-                                "javax.validation..",
-                                "javax.ws.rs..",
+                                "jakarta.inject..",
+                                "jakarta.enterprise.context..",
+                                "jakarta.validation..",
+                                "jakarta.ws.rs..",
                                 "java.."
                             )
                             // https://github.com/TNG/ArchUnit/issues/183 による配列型の個別追加
@@ -59,9 +59,9 @@ class ReservationServiceDependencyArchUnitTest {
                                 "io.extact.msa.rms.reservation..",
                                 "org.apache.commons.lang3..",
                                 "org.slf4j..",
-                                "javax.inject..",
-                                "javax.enterprise.context..",
-                                "javax.transaction..",
+                                "jakarta.inject..",
+                                "jakarta.enterprise.context..",
+                                "jakarta.transaction..",
                                 "java.."
                             )
                             // https://github.com/TNG/ArchUnit/issues/183 による配列型の個別追加
@@ -86,10 +86,10 @@ class ReservationServiceDependencyArchUnitTest {
                                 "org.apache.commons.lang3..",
                                 "org.slf4j..",
                                 "org.eclipse.microprofile.config..",
-                                "javax.inject..",
-                                "javax.enterprise.context..",
-                                "javax.enterprise.inject..", // for InjectionPoint
-                                "javax.persistence..",
+                                "jakarta.inject..",
+                                "jakarta.enterprise.context..",
+                                "jakarta.enterprise.inject..", // for InjectionPoint
+                                "jakarta.persistence..",
                                 "java.."
                             )
                             // https://github.com/TNG/ArchUnit/issues/183 による配列型の個別追加
@@ -111,15 +111,15 @@ class ReservationServiceDependencyArchUnitTest {
                                 "io.extact.msa.rms.platform.fw.domain..",
                                 "io.extact.msa.rms.reservation.domain..",
                                 "org.apache.commons.lang3..",
-                                "javax.persistence..",
-                                "javax.validation..",
+                                "jakarta.persistence..",
+                                "jakarta.validation..",
                                 "java.."
                                 );
 
     /**
-     * javax.persistence.*への依存パッケージの定義
+     * jakarta.persistence.*への依存パッケージの定義
      * <pre>
-     * ・javax.persistence.*に依存するのはpersistence.jpaパッケージとdomain(entity)パッケージの2つであること
+     * ・jakarta.persistence.*に依存するのはpersistence.jpaパッケージとdomain(entity)パッケージの2つであること
      * </pre>
      */
     @ArchTest
@@ -132,7 +132,7 @@ class ReservationServiceDependencyArchUnitTest {
             .should()
                 .dependOnClassesThat()
                     .resideInAnyPackage(
-                        "javax.persistence.."
+                        "jakarta.persistence.."
                         );
 
     /**

@@ -2,8 +2,8 @@ package io.extact.msa.rms.reservation.external.bridge;
 
 import static io.extact.msa.rms.reservation.external.ApiType.*;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 

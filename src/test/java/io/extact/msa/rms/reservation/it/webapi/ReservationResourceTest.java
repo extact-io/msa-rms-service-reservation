@@ -9,7 +9,7 @@ import java.net.URI;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.Response.Status;
 
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.junit.jupiter.api.BeforeEach;

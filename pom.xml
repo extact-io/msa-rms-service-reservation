@@ -86,8 +86,8 @@
 			<artifactId>jakarta.json.bind-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.security.enterprise</groupId>
-			<artifactId>javax.security.enterprise-api</artifactId>
+			<groupId>jakarta.security.enterprise</groupId>
+			<artifactId>jakarta.security.enterprise-api</artifactId>
 		</dependency>
 
 		<!-- dependent MicroProfile APIs -->
@@ -217,11 +217,6 @@
 		</dependency>
 
 		<!-- for BeanValidation runtimes -->
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.ext</groupId>
 			<artifactId>jersey-bean-validation</artifactId>

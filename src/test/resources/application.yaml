@@ -17,10 +17,10 @@ external:
 test.db.connection:
   unitname: rms
   properties:
-    javax.persistence.transactionType: RESOURCE_LOCAL
-    javax.persistence.jdbc.driver: org.h2.jdbcx.JdbcDataSource
-    javax.persistence.jdbc.url: jdbc:h2:mem:rms;INIT=RUNSCRIPT FROM 'classpath:init-rms.ddl'
-    javax.persistence.jdbc.user: sa
-    javax.persistence.jdbc.password:
+    jakarta.persistence.transactionType: RESOURCE_LOCAL
+    jakarta.persistence.jdbc.driver: org.h2.jdbcx.JdbcDataSource
+    jakarta.persistence.jdbc.url: jdbc:h2:mem:rms;INIT=RUNSCRIPT FROM 'classpath:init-rms.ddl'
+    jakarta.persistence.jdbc.user: sa
+    jakarta.persistence.jdbc.password:
     eclipselink.target-server: None
 
