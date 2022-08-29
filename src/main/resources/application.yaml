@@ -54,6 +54,11 @@ configuredCdi:
 
 main.manifest.jar: msa-rms-service-reservation\.jar$
 
+healthCheck:
+  otherChecks:
+    - io.extact.msa.rms.platform.core.health.SimpleReadnessCheck
+
+
 persistence:
   apiType: jpa
 
