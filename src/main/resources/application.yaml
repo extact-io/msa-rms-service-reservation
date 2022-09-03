@@ -56,9 +56,9 @@ main.manifest.jar: msa-rms-service-reservation\.jar$
 
 healthCheck:
   otherChecks:
-    - io.extact.msa.rms.platform.core.health.RestServerReadnessCheck
+    - io.extact.msa.rms.platform.core.health.RestServersReadnessCheck
     - io.extact.msa.rms.platform.core.health.DbReadnessCheck
-  restServerReadnessCheck.probe.url:
+  restServersReadnessCheck.probe.url:
     - ${service.url.item}
     - ${service.url.user}
   dbReadnessCheck.pingSql: "SELECT 1"
