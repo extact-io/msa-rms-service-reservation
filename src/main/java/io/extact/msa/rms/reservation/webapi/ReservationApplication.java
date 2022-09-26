@@ -2,10 +2,9 @@ package io.extact.msa.rms.reservation.webapi;
 
 import java.util.Set;
 
-import jakarta.enterprise.context.ApplicationScoped;
-
 import io.extact.msa.rms.platform.core.jwt.login.PropagatedLoginHeaderRequestFilter;
 import io.extact.msa.rms.platform.fw.webapi.server.RmsApplication;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class ReservationApplication extends RmsApplication {

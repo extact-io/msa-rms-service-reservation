@@ -14,7 +14,7 @@
 	<properties>
 		<mainClass>io.extact.msa.rms.reservation.webapi.ReservationWebApiMain</mainClass>
 		<oas.server.host>localhost</oas.server.host>
-		<oas.server.port>7001</oas.server.port>
+		<oas.server.port>7003</oas.server.port>
 		<target.env>develop</target.env>
 		<docker.image.name>msa-service-reservation</docker.image.name>
 	</properties>

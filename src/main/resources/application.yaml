@@ -56,13 +56,15 @@ main.manifest.jar: msa-rms-service-reservation\.jar$
 
 healthCheck:
   otherChecks:
-    - io.extact.msa.rms.platform.core.health.RestServersReadnessCheck
+    - io.extact.msa.rms.platform.core.health.ReadnessOfOutboundServersHealthCheck
     - io.extact.msa.rms.platform.core.health.DbReadnessCheck
-  restServersReadnessCheck.probe.url:
+  readnessOfOutboundServersHealthCheck.probe.url:
     - ${service.url.item}
     - ${service.url.user}
   dbReadnessCheck.pingSql: "SELECT 1"
 
+openapi.info:
+  title: 予約サービス公開API
 
 persistence:
   apiType: jpa
