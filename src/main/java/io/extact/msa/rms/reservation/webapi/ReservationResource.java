@@ -4,21 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.eclipse.microprofile.openapi.annotations.Operation;
-import org.eclipse.microprofile.openapi.annotations.enums.ParameterIn;
-import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
-import org.eclipse.microprofile.openapi.annotations.media.Content;
-import org.eclipse.microprofile.openapi.annotations.media.Schema;
-import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
-import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
-import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
-import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirements;
-import org.eclipse.microprofile.openapi.annotations.tags.Tag;
-
-import io.extact.msa.rms.platform.fw.domain.constraint.RmsId;
-import io.extact.msa.rms.platform.fw.exception.BusinessFlowException;
-import io.extact.msa.rms.reservation.webapi.dto.AddReservationEventDto;
-import io.extact.msa.rms.reservation.webapi.dto.ReservationResourceDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.Consumes;
@@ -32,8 +17,22 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
-public interface ReservationResource {
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.enums.ParameterIn;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
+import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirements;
 
+import io.extact.msa.rms.platform.fw.domain.constraint.RmsId;
+import io.extact.msa.rms.platform.fw.exception.BusinessFlowException;
+import io.extact.msa.rms.reservation.webapi.dto.AddReservationEventDto;
+import io.extact.msa.rms.reservation.webapi.dto.ReservationResourceDto;
+
+public interface ReservationResource {
     /*
      * NOTE:
      * @SecurityRequirementSetで本来はRmsHeaderAuthn and RmsHeaderAuthzにすべきだがsmallrye-open-apiがバグ？で未サポートのため
@@ -73,7 +72,6 @@ public interface ReservationResource {
     @GET
     @Path("/item/{itemId}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Tag(name = "Member")
     @Operation(operationId = "findByRentalItemId", summary = "指定されたレンタル品に対する予約を検索する", description = "指定されたレンタル品に対する予約を検索する")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "rentalItemId", description = "レンタル品ID", in = ParameterIn.PATH, required = true)

@@ -29,7 +29,6 @@ server:
 web-api-item/mp-rest/url: ${service.url.item}
 web-api-user/mp-rest/url: ${service.url.user}
 
-
 security.config: # encryption settings for {$ GCM = xxx}
   # set to true for production - if set to true, clear text passwords will cause failure
   require-encryption: ${rms.sec.require.encrypt}
