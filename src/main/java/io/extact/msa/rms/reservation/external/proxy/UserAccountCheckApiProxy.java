@@ -1,4 +1,4 @@
-package io.extact.msa.rms.reservation.external.bridge;
+package io.extact.msa.rms.reservation.external.proxy;
 
 import static io.extact.msa.rms.reservation.external.ApiType.*;
 
@@ -13,12 +13,12 @@ import io.extact.msa.rms.reservation.external.restclient.UserAccountCheckApiRest
 
 @ApplicationScoped
 @EnabledIfRuntimeConfig(propertyName = PROP_NAME, value = REAL)
-public class UserAccountCheckApiRestBridge implements UserAccountCheckApi {
+public class UserAccountCheckApiProxy implements UserAccountCheckApi {
 
     private UserAccountCheckApiRestClient client;
 
     @Inject
-    public UserAccountCheckApiRestBridge(@RestClient UserAccountCheckApiRestClient client) {
+    public UserAccountCheckApiProxy(@RestClient UserAccountCheckApiRestClient client) {
         this.client = client;
     }
 

@@ -29,8 +29,10 @@ import io.extact.msa.rms.reservation.webapi.ReservationResource;
 import io.extact.msa.rms.reservation.webapi.dto.AddReservationEventDto;
 import io.extact.msa.rms.reservation.webapi.dto.ReservationResourceDto;
 import io.extact.msa.rms.test.junit5.JulToSLF4DelegateExtension;
+import io.extact.msa.rms.test.utils.ClearOpenTelemetryContextCdiExtension;
 import io.helidon.microprofile.tests.junit5.AddBean;
 import io.helidon.microprofile.tests.junit5.AddConfig;
+import io.helidon.microprofile.tests.junit5.AddExtension;
 import io.helidon.microprofile.tests.junit5.HelidonTest;
 
 /**
@@ -45,6 +47,7 @@ import io.helidon.microprofile.tests.junit5.HelidonTest;
  * </pre>
  */
 @HelidonTest
+@AddExtension(ClearOpenTelemetryContextCdiExtension.class)
 @AddBean(RentalItemCheckApiRemoteStub.class)
 @AddBean(UserAccountCheckApiRemoteStub.class)
 @AddBean(CheckApiRemoteStubApplication.class)

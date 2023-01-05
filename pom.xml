@@ -107,6 +107,10 @@
         	<groupId>org.eclipse.microprofile.rest.client</groupId>
     		<artifactId>microprofile-rest-client-api</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.microprofile.opentracing</groupId>
+			<artifactId>microprofile-opentracing-api</artifactId>
+		</dependency>
 
 		<!-- ======================================== -->
 		<!-- *** runtime scope dependencies ***       -->
@@ -146,6 +150,22 @@
 			<groupId>io.helidon.config</groupId>
 			<artifactId>helidon-config-encryption</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+				<dependency>
+			<groupId>io.helidon.microprofile.tracing</groupId>
+			<artifactId>helidon-microprofile-tracing</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.helidon.tracing</groupId>
+			<artifactId>helidon-tracing-jaeger</artifactId>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-jdk14</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- for to use platform-module runtimes -->
 		<dependency>

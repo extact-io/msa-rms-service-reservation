@@ -4,7 +4,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 
 import io.extact.msa.rms.platform.fw.persistence.file.FileUtils;
+import io.extact.msa.rms.test.utils.ClearOpenTelemetryContextCdiExtension;
 import io.helidon.microprofile.tests.junit5.AddConfig;
+import io.helidon.microprofile.tests.junit5.AddExtension;
 
 /**
  * GitHubActionの実行環境でwindowsを選択すると環境的な問題でディレクトリ作成に
@@ -16,6 +18,7 @@ import io.helidon.microprofile.tests.junit5.AddConfig;
  * </pre>
  */
 @DisabledIfEnvironmentVariable(named = "RMS_CI_ENV", matches = "github")
+@AddExtension(ClearOpenTelemetryContextCdiExtension.class)
 @AddConfig(key = "persistence.apiType", value = "file")
 @AddConfig(key = "csv.type", value = "permanent")
 @AddConfig(key = "csv.permanent.directory", value = ReservationServiceByPermanentFileCrudTest.TEST_PERMANENT_DIR)

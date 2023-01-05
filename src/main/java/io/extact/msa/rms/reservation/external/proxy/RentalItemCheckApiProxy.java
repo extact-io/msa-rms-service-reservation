@@ -1,4 +1,4 @@
-package io.extact.msa.rms.reservation.external.bridge;
+package io.extact.msa.rms.reservation.external.proxy;
 
 import static io.extact.msa.rms.reservation.external.ApiType.*;
 
@@ -13,12 +13,12 @@ import io.extact.msa.rms.reservation.external.restclient.RentalItemCheckApiRestC
 
 @ApplicationScoped
 @EnabledIfRuntimeConfig(propertyName = PROP_NAME, value = REAL)
-public class RentalItemCheckApiRestBridge implements RentalItemCheckApi {
+public class RentalItemCheckApiProxy implements RentalItemCheckApi {
 
     private RentalItemCheckApiRestClient client;
 
     @Inject
-    public RentalItemCheckApiRestBridge(@RestClient RentalItemCheckApiRestClient client) {
+    public RentalItemCheckApiProxy(@RestClient RentalItemCheckApiRestClient client) {
         this.client = client;
     }
 
