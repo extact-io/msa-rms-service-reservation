@@ -16,7 +16,7 @@ import io.extact.msa.rms.reservation.service.ReservationService;
 import io.extact.msa.rms.reservation.webapi.dto.AddReservationEventDto;
 import io.extact.msa.rms.reservation.webapi.dto.ReservationResourceDto;
 
-@Path("/reservations")
+@Path("reservations")
 @ApplicationScoped
 @ValidateParam
 public class ReservationResourceImpl implements ReservationResource {

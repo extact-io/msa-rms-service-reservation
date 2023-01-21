@@ -8,7 +8,7 @@ import io.extact.msa.rms.platform.test.stub.RentalItemMemoryStub;
 import io.extact.msa.rms.reservation.external.restclient.RentalItemCheckApiRestClient;
 
 @ApplicationScoped
-@Path("/items")
+@Path("items")
 public class RentalItemCheckApiRemoteStub implements RentalItemCheckApiRestClient {
 
     private RentalItemMemoryStub stub = new RentalItemMemoryStub();

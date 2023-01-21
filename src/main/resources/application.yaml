@@ -49,18 +49,18 @@ javax.sql.DataSource:
 #----------------------------------
 configuredCdi:
   register:
-    - class: io.extact.msa.rms.platform.core.jwt.client.PropagateLoginClientHeadersFactory
+    - class: io.extact.msa.rms.platform.fw.external.PropagateLoginUserClientHeadersFactory
 
 main.manifest.jar: msa-rms-service-reservation\.jar$
 
 healthCheck:
   otherChecks:
-    - io.extact.msa.rms.platform.core.health.ReadnessOfOutboundServersHealthCheck
-    - io.extact.msa.rms.platform.core.health.DbReadnessCheck
-  readnessOfOutboundServersHealthCheck.probe.url:
+    - io.extact.msa.rms.platform.core.health.ReadinessOfOutboundServersHealthCheck
+    - io.extact.msa.rms.platform.core.health.DbReadinessCheck
+  readinessOfOutboundServersHealthCheck.probe.url:
     - ${service.url.item}
     - ${service.url.user}
-  dbReadnessCheck.pingSql: "SELECT 1"
+  dbReadinessCheck.pingSql: "SELECT 1"
 
 openapi.info:
   title: 予約サービス公開API

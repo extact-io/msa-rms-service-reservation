@@ -8,7 +8,7 @@ import io.extact.msa.rms.platform.test.stub.UserAccountMemoryStub;
 import io.extact.msa.rms.reservation.external.restclient.UserAccountCheckApiRestClient;
 
 @ApplicationScoped
-@Path("/users")
+@Path("users")
 public class UserAccountCheckApiRemoteStub implements UserAccountCheckApiRestClient {
 
     private UserAccountMemoryStub stub = new UserAccountMemoryStub();

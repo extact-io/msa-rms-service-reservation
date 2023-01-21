@@ -41,6 +41,7 @@ public interface ReservationResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "getAll", summary = "予約の全件を取得する", description = "登録されているすべての予約を取得する")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @APIResponse(responseCode = "200", description = "検索結果", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.ARRAY, implementation = ReservationResourceDto.class)))
@@ -49,6 +50,7 @@ public interface ReservationResource {
     @GET
     @Path("/item/{itemId}/startdate/{startDate}")
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "findByRentalItemAndStartDate", summary = "指定されたレンタル品と利用開始日で予約を検索する", description = "指定されたレンタル品と利用開始日に一致する予約を検索する")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "itemId", description = "レンタル品ID", in = ParameterIn.PATH, required = true)
@@ -61,6 +63,7 @@ public interface ReservationResource {
     @GET
     @Path("/reserver/{reserverId}")
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "findByReserverId", summary = "指定されたユーザが予約者の予約を検索する", description = "指定されたユーザが予約者の予約を検索する")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "reserverId", description = "ユーザID", in = ParameterIn.PATH, required = true)
@@ -72,6 +75,7 @@ public interface ReservationResource {
     @GET
     @Path("/item/{itemId}")
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "findByRentalItemId", summary = "指定されたレンタル品に対する予約を検索する", description = "指定されたレンタル品に対する予約を検索する")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "rentalItemId", description = "レンタル品ID", in = ParameterIn.PATH, required = true)
@@ -83,6 +87,7 @@ public interface ReservationResource {
     @GET
     @Path("/item/overlapped")
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "findOverlappedReservations", summary = "指定された期間と被る予約を検索する", description = "指定された期間と予約されている期間が被っているものを対象にする")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "from", description = "利用開始日", in = ParameterIn.PATH, required = true, schema = @Schema(implementation = String.class, example = "20201230", format = "yyyyMMdd"))
@@ -96,6 +101,7 @@ public interface ReservationResource {
     @GET
     @Path("/item/{itemId}/overlapped")
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "findOverlappedReservation", summary = "指定された期間で予約されているレンタル品の予約を取得する", description = "指定された期間と予約されている期間が被っているものを対象にする。なお、該当なしはnullに相当する204(NoContent)を返す")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "itemId", description = "レンタル品ID", in = ParameterIn.PATH, required = true)
@@ -112,6 +118,7 @@ public interface ReservationResource {
     @GET
     @Path("/has-item/{itemId}")
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "hasRentalItemWith", summary = "指定されたレンタル品に対する予約があるかを返す")
     @SecurityRequirement(name = "RmsJwtAuth")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
@@ -123,6 +130,7 @@ public interface ReservationResource {
     @GET
     @Path("/has-user/{userId}")
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "hasUserAccountWith", summary = "指定されたユーザの予約があるかを返す")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "userId", description = "ユーザID", in = ParameterIn.PATH, required = true)
@@ -134,6 +142,7 @@ public interface ReservationResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "add", summary = "レンタル品を予約する", description = "予約対象のレンタル品が存在しない場合は404を予定期間に別の予約が既に入っている場合は409を返す")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "dto", description = "登録内容", required = true, content = @Content(mediaType = "application/json", schema = @Schema(implementation = AddReservationEventDto.class)))
@@ -147,6 +156,7 @@ public interface ReservationResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    //--- for OpenAPI
     @Operation(operationId = "update", summary = "予約を更新する", description = "依頼された予約を更新する")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "dto", description = "更新内容", required = true, content = @Content(mediaType = "application/json", schema = @Schema(implementation = ReservationResourceDto.class)))
@@ -158,6 +168,7 @@ public interface ReservationResource {
 
     @DELETE
     @Path("/{reservationId}")
+    //--- for OpenAPI
     @Operation(operationId = "delete", summary = "予約を削除する", description = "予約を削除する")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @Parameter(name = "reservationId", description = "予約ID", in = ParameterIn.PATH, required = true)
@@ -169,6 +180,7 @@ public interface ReservationResource {
 
     @DELETE
     @Path("cancel")
+    //--- for OpenAPI
     @Operation(operationId = "cancel", summary = "予約をキャンセルする", description = "依頼された予約IDに対する予約をキャンセルする。予約のキャンセルは予約した人しか行えない。"
             + "他の人が予約キャンセルを行った場合は禁止操作としてエラーにする")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})

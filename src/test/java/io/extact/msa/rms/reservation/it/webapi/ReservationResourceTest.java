@@ -63,7 +63,7 @@ class ReservationResourceTest {
     @BeforeEach
     void setup() throws Exception {
         this.reservationResource = RestClientBuilder.newBuilder()
-                .baseUri(new URI("http://localhost:7001/reservations"))
+                .baseUri(new URI("http://localhost:7001/api/reservations"))
                 .register(RmsTypeParameterFeature.class)
                 .build(ReservationResource.class);
     }
