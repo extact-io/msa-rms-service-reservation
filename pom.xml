@@ -258,20 +258,6 @@
 	</dependencies>
 
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>src/main/resources-filtered</directory>
-				<filtering>true</filtering>
-			</resource>
-			<!--
-			<resource>
-				<directory>env/profile/${target.env}</directory>
-			</resource>
-			-->
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.jacoco</groupId>
