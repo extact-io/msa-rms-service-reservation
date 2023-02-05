@@ -7,7 +7,7 @@ import io.helidon.microprofile.tests.junit5.HelidonTest;
 
 @HelidonTest(resetPerTest = true)
 @AddExtension(ClearOpenTelemetryContextCdiExtension.class)
-@AddConfig(key = "persistence.apiType", value = "file")
-@AddConfig(key = "csv.type", value = "temporary")
+@AddConfig(key = "rms.persistence.apiType", value = "file")
+@AddConfig(key = "rms.persistence.csv.type", value = "temporary")
 class ReservationFileRepositoryValidationTest extends AbstractReservationRepositoryValidationTest {
 }

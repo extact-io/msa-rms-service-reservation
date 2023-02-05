@@ -1,6 +1,5 @@
 package io.extact.msa.rms.reservation.it.service;
 
-import static io.extact.msa.rms.reservation.external.ApiType.*;
 import static io.extact.msa.rms.test.assertj.ToStringAssert.*;
 import static org.assertj.core.api.Assertions.*;
 
@@ -28,7 +27,6 @@ import io.helidon.microprofile.tests.junit5.HelidonTest;
 @AddBean(RentalItemCheckApiRemoteStub.class)
 @AddBean(UserAccountCheckApiRemoteStub.class)
 @AddBean(CheckApiRemoteStubApplication.class)
-@AddConfig(key = PROP_NAME, value = REAL)
 @AddConfig(key = "server.port", value = "7001") // for RemoteStub Server
 @ExtendWith(JulToSLF4DelegateExtension.class)
 @TestMethodOrder(OrderAnnotation.class)

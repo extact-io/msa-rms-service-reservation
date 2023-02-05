@@ -2,7 +2,10 @@ package io.extact.msa.rms.reservation.it.persistence;
 
 import static org.assertj.core.api.Assertions.*;
 
+import jakarta.enterprise.event.Observes;
 import jakarta.enterprise.inject.spi.CDI;
+import jakarta.enterprise.inject.spi.Extension;
+import jakarta.enterprise.inject.spi.ProcessAnnotatedType;
 import jakarta.validation.ConstraintViolationException;
 
 import org.junit.jupiter.api.Test;
@@ -12,12 +15,17 @@ import io.extact.msa.rms.platform.fw.persistence.GenericRepository;
 import io.extact.msa.rms.reservation.domain.Reservation;
 import io.extact.msa.rms.reservation.external.RentalItemCheckApi;
 import io.extact.msa.rms.reservation.external.UserAccountCheckApi;
+import io.extact.msa.rms.reservation.external.proxy.RentalItemCheckApiProxy;
+import io.extact.msa.rms.reservation.external.proxy.UserAccountCheckApiProxy;
+import io.extact.msa.rms.reservation.it.persistence.AbstractReservationRepositoryValidationTest.IgnoreCheckApiProxyCdiExtension;
 import io.extact.msa.rms.reservation.it.persistence.AbstractReservationRepositoryValidationTest.RentalItemCheckApiStub;
 import io.extact.msa.rms.reservation.it.persistence.AbstractReservationRepositoryValidationTest.UserAccountCheckApiStub;
 import io.extact.msa.rms.reservation.persistence.ReservationRepository;
 import io.extact.msa.rms.test.junit5.JulToSLF4DelegateExtension;
 import io.helidon.microprofile.tests.junit5.AddBean;
+import io.helidon.microprofile.tests.junit5.AddExtension;
 
+@AddExtension(IgnoreCheckApiProxyCdiExtension.class)
 @AddBean(RentalItemCheckApiStub.class)
 @AddBean(UserAccountCheckApiStub.class)
 @ExtendWith(JulToSLF4DelegateExtension.class)
@@ -65,6 +73,17 @@ abstract class AbstractReservationRepositoryValidationTest {
         @Override
         public boolean exists(int userId) {
             return false;
+        }
+    }
+
+    public static class IgnoreCheckApiProxyCdiExtension implements Extension {
+        void enabledIfRuntimeConfig(@Observes ProcessAnnotatedType<?> event) {
+            if (event.getAnnotatedType().getJavaClass().equals(RentalItemCheckApiProxy.class)) {
+                event.veto();
+            }
+            if (event.getAnnotatedType().getJavaClass().equals(UserAccountCheckApiProxy.class)) {
+                event.veto();
+            }
         }
     }
 }

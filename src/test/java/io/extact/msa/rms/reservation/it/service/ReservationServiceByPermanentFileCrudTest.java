@@ -19,9 +19,9 @@ import io.helidon.microprofile.tests.junit5.AddExtension;
  */
 @DisabledIfEnvironmentVariable(named = "RMS_CI_ENV", matches = "github")
 @AddExtension(ClearOpenTelemetryContextCdiExtension.class)
-@AddConfig(key = "persistence.apiType", value = "file")
-@AddConfig(key = "csv.type", value = "permanent")
-@AddConfig(key = "csv.permanent.directory", value = ReservationServiceByPermanentFileCrudTest.TEST_PERMANENT_DIR)
+@AddConfig(key = "rms.persistence.apiType", value = "file")
+@AddConfig(key = "rms.persistence.csv.type", value = "permanent")
+@AddConfig(key = "rms.persistence.csv.permanent.directory", value = ReservationServiceByPermanentFileCrudTest.TEST_PERMANENT_DIR)
 class ReservationServiceByPermanentFileCrudTest extends AbstractReservationServiceCrudTest {
 
     static final String TEST_PERMANENT_DIR = "./target/temp-integrationtest";

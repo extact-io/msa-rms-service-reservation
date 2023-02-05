@@ -5,6 +5,6 @@ import io.helidon.microprofile.tests.junit5.AddConfig;
 import io.helidon.microprofile.tests.junit5.AddExtension;
 
 @AddExtension(ClearOpenTelemetryContextCdiExtension.class)
-@AddConfig(key = "persistence.apiType", value = "jpa")
+@AddConfig(key = "rms.persistence.apiType", value = "jpa")
 class ReservationServiceByJpaCrudTest extends AbstractReservationServiceCrudTest {
 }

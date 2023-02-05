@@ -1,17 +1,15 @@
 config_ordinal: 201
-
-service.url:
-  item: http://localhost:7001
-  user: http://localhost:7001
-
 #----------------------------------
 # -service.jar Test Configurations
 #----------------------------------
-persistence:
-  apiType: jpa
+env.rms:
+  service.url:
+    item: http://localhost:7001
+    user: http://localhost:7001
 
-external:
-  apiType: stub
+rm::
+  persistence:
+    apiType: jpa
 
 # DB Conneciton for Unit Test
 test.db.connection:
