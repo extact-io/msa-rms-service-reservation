@@ -6,10 +6,8 @@ env.rms:
   service.url:
     item: http://localhost:7002
     user: http://localhost:7004
-  sec.require.encrypt: false
-  sec.aes.passphrase: override-by-secret-file
   h2.user: sa
-  h2.password: ${CLEAR=}
+  h2.password:
   h2.script: classpath:init-rms.ddl
 
 #----------------------------------
@@ -20,21 +18,13 @@ server:
   access-log:
     format: "%t %h %r %s %b %D"
 
-security:
-  config: # encryption settings for {$ GCM = xxx}
-    # set to true for production - if set to true, clear text passwords will cause failure
-    require-encryption: ${env.rms.sec.require.encrypt}
-    # this should be configured by system property or environment variable for production - the "master" passwords for AES decryption
-    aes.insecure-passphrase: ${env.rms.sec.aes.passphrase}
-
 javax.sql.DataSource:
   rmsDataSource:
     dataSourceClassName: org.h2.jdbcx.JdbcDataSource
     dataSource:
       url: jdbc:h2:mem:rms;INIT=RUNSCRIPT FROM '${env.rms.h2.script}'
-      # decrypted value => user=sa, password=""
       user: ${env.rms.h2.user}
-      password: ${env.rms.h2.password}
+      password: ${env.rms.h2.password:""}
 
 web-api-item/mp-rest/url: ${env.rms.service.url.item}
 web-api-user/mp-rest/url: ${env.rms.service.url.user}
@@ -72,7 +62,8 @@ rms:
     main.jar: msa-rms-service-reservation\.jar$
   debug:
     configdump:
-      filter-enable: true
-      filters:
-        #- filter: security
-        - filter: server
+      enable: true
+      filter.pattern:
+        - security
+        - env.rms
+        - server
