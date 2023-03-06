@@ -27,7 +27,7 @@
 
 	<properties>
 		<mainClass>io.extact.msa.rms.reservation.webapi.ReservationWebApiMain</mainClass>
-		<docker.image.name>msa-service-reservation</docker.image.name>
+		<image.name>msa-service-reservation</image.name>
 	</properties>
 
 	<dependencies>
