@@ -3,7 +3,6 @@ name: verify-to-deploy-workflow
 
 on:
   workflow_dispatch:
-    branches: [ main ]
     inputs:
       skip-verify:
         description: skip verify?
@@ -24,5 +23,6 @@ jobs:
     uses: extact-io/msa-rms-parent/.github/workflows/deploy-job.yml@main
     with:
       repo: ${{ github.repository }}
+      skip-test: true
       with-image: true
     secrets: inherit
