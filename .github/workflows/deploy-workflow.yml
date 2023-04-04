@@ -1,10 +1,10 @@
-# Workflow - build, publish jar and image to GitHub Packages for this repository(msa-rms-service-reservation)
 name: deploy-workflow
 
 on:
   workflow_dispatch:
     inputs:
       skip-test:
+        description: skip step?
         required: true
         type: boolean
         default: false
@@ -15,15 +15,21 @@ on:
         type: boolean
       
 jobs:
-  execute:
-    uses: extact-io/msa-rms-parent/.github/workflows/deploy-job.yml@main
+  build:
+    uses: extact-io/msa-rms-parent/.github/workflows/build-to-repo-job.yml@main
     with:
       repo: ${{ github.repository }}
+      aws-appname: reservation-service
       skip-test: ${{ inputs.skip-test }}
       with-image: true
-      deploy-type: ecs
+    secrets: inherit
+  deploy:
+    needs: build
+    uses: extact-io/msa-rms-parent/.github/workflows/deploy-to-ecs-job.yml@main
+    with:
+      repo: ${{ github.repository }}
+      aws-appname: reservation-service
       ecs-taskname: reservation-service-task
       ecs-containername: reservation-service-container
       image-name: extact-io/msa-service-reservation
-      ecs-servicename: reservation-service
     secrets: inherit
