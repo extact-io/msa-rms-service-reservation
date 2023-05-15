@@ -19,6 +19,7 @@ import io.extact.msa.rms.platform.fw.external.PropagateResponseExceptionMapper;
 @RegisterProvider(PropagateResponseExceptionMapper.class)
 @RegisterClientHeaders(PropagateLoginUserClientHeadersFactory.class)
 @Path("api/users")
+@NetworkConnectionErrorAware
 public interface UserAccountCheckApiRestClient {
     @GET
     @Path("/exists/{userId}")

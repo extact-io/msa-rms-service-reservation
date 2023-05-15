@@ -33,6 +33,8 @@ web-api-user/mp-rest/url: ${env.rms.service.url.user}
 # Applications Configurations
 #----------------------------------
 rms:
+  app:
+    name: ReservationService
   cdi:
     configuredCdi:
       register:

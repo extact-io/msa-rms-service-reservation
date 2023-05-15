@@ -19,6 +19,7 @@ import io.extact.msa.rms.platform.fw.external.PropagateResponseExceptionMapper;
 @RegisterProvider(PropagateResponseExceptionMapper.class)
 @RegisterClientHeaders(PropagateLoginUserClientHeadersFactory.class)
 @Path("api/items")
+@NetworkConnectionErrorAware
 public interface RentalItemCheckApiRestClient {
     @GET
     @Path("/exists/{itemId}")
