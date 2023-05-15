@@ -5,10 +5,12 @@ import jakarta.inject.Inject;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import io.extact.msa.rms.platform.fw.exception.interceptor.NetworkConnectionErrorAware;
 import io.extact.msa.rms.reservation.external.UserAccountCheckApi;
 import io.extact.msa.rms.reservation.external.restclient.UserAccountCheckApiRestClient;
 
 @ApplicationScoped
+@NetworkConnectionErrorAware
 public class UserAccountCheckApiProxy implements UserAccountCheckApi {
 
     private UserAccountCheckApiRestClient client;
