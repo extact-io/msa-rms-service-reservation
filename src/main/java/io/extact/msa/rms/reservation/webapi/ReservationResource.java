@@ -45,6 +45,8 @@ public interface ReservationResource {
     @Operation(operationId = "getAll", summary = "予約の全件を取得する", description = "登録されているすべての予約を取得する")
     @SecurityRequirements({@SecurityRequirement(name = "RmsHeaderAuthn"), @SecurityRequirement(name = "RmsHeaderAuthz")})
     @APIResponse(responseCode = "200", description = "検索結果", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.ARRAY, implementation = ReservationResourceDto.class)))
+    @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     List<ReservationResourceDto> getAll();
 
     @GET
@@ -58,6 +60,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "200", description = "検索結果", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.ARRAY, implementation = ReservationResourceDto.class)))
     @APIResponse(responseCode = "400", ref = "#/components/responses/ParameterError")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     List<ReservationResourceDto> findByRentalItemAndStartDate(@RmsId @PathParam("itemId") Integer itemId, @NotNull @PathParam("startDate") LocalDate startDate);
 
     @GET
@@ -70,6 +73,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "200", description = "検索結果", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.ARRAY, implementation = ReservationResourceDto.class)))
     @APIResponse(responseCode = "400", ref = "#/components/responses/ParameterError")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     List<ReservationResourceDto> findByReserverId(@RmsId @PathParam("reserverId") Integer reserverId);
 
     @GET
@@ -82,6 +86,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "200", description = "検索結果", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.ARRAY, implementation = ReservationResourceDto.class)))
     @APIResponse(responseCode = "400", ref = "#/components/responses/ParameterError")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     List<ReservationResourceDto> findByRentalItemId(@RmsId @PathParam("itemId") Integer itemId);
 
     @GET
@@ -95,6 +100,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "200", description = "検索結果", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.ARRAY, implementation = ReservationResourceDto.class)))
     @APIResponse(responseCode = "400", ref = "#/components/responses/ParameterError")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     List<ReservationResourceDto> findOverlappedReservations(@NotNull @QueryParam("from") LocalDateTime from,
             @NotNull @QueryParam("to") LocalDateTime to);
 
@@ -111,6 +117,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "204", ref = "#/components/responses/NoContent")
     @APIResponse(responseCode = "400", ref = "#/components/responses/ParameterError")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     ReservationResourceDto findOverlappedReservation(@RmsId @PathParam("itemId") Integer itemId,
             @NotNull @QueryParam("from") LocalDateTime from,
             @NotNull @QueryParam("to") LocalDateTime to);
@@ -125,6 +132,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "200", description = "ある場合はtrueを返す", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.BOOLEAN, implementation = Boolean.class)))
     @APIResponse(responseCode = "400", ref = "#/components/responses/ParameterError")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     boolean hasRentalItemWith(@RmsId @PathParam("itemId") Integer itemId);
 
     @GET
@@ -137,6 +145,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "200", description = "ある場合はtrueを返す", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.BOOLEAN, implementation = Boolean.class)))
     @APIResponse(responseCode = "400", ref = "#/components/responses/ParameterError")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     boolean hasUserAccountWith(@RmsId @PathParam("userId") Integer userId);
 
     @POST
@@ -151,6 +160,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "404", ref = "#/components/responses/UnknownData")
     @APIResponse(responseCode = "409", ref = "#/components/responses/DataDupricate")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     ReservationResourceDto add(@Valid AddReservationEventDto dto) throws BusinessFlowException;
 
     @PUT
@@ -164,6 +174,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "400", ref = "#/components/responses/ParameterError")
     @APIResponse(responseCode = "404", ref = "#/components/responses/UnknownData")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     ReservationResourceDto update(@Valid ReservationResourceDto dto);
 
     @DELETE
@@ -176,6 +187,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "400", ref = "#/components/responses/ParameterError")
     @APIResponse(responseCode = "404", ref = "#/components/responses/UnknownData")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     void delete(@RmsId @PathParam("reservationId") Integer reservationId) throws BusinessFlowException;
 
     @DELETE
@@ -191,6 +203,7 @@ public interface ReservationResource {
     @APIResponse(responseCode = "403", ref = "#/components/responses/Forbidden")
     @APIResponse(responseCode = "404", ref = "#/components/responses/UnknownData")
     @APIResponse(responseCode = "500", ref = "#/components/responses/ServerError")
+    @APIResponse(responseCode = "503", ref = "#/components/responses/ServiceUnavailable")
     void cancel(@RmsId @QueryParam("reservationId") Integer reservationId,
             @RmsId @QueryParam("reserverId") Integer reserverId) throws BusinessFlowException;
 }
