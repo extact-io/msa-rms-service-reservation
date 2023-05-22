@@ -122,6 +122,10 @@
 			<groupId>org.eclipse.microprofile.opentracing</groupId>
 			<artifactId>microprofile-opentracing-api</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.microprofile.fault-tolerance</groupId>
+			<artifactId>microprofile-fault-tolerance-api</artifactId>
+		</dependency>
 
 		<!-- ======================================== -->
 		<!-- *** runtime scope dependencies ***       -->
@@ -177,6 +181,16 @@
 					<artifactId>slf4j-jdk14</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>io.helidon.microprofile</groupId>
+			<artifactId>helidon-microprofile-fault-tolerance</artifactId>
+	     	<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.helidon.microprofile.metrics</groupId>
+			<artifactId>helidon-microprofile-metrics</artifactId>
+    		<scope>runtime</scope>
 		</dependency>
 		<!-- for to use platform-module runtimes -->
 		<dependency>
